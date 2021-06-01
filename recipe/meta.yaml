@@ -19,22 +19,29 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python 2.7|>=3.5
     - setuptools
     - setuptools_scm
+    - wheel
   run:
-    - python
+    - python 2.7|>=3.5
     - apipkg >=1.4
 
 test:
   imports:
     - execnet
+    - execnet.script
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: http://codespeak.net/execnet
   dev_url: https://github.com/pytest-dev/execnet
   doc_url: http://codespeak.net/execnet
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: distributed Python deployment and communication
 
