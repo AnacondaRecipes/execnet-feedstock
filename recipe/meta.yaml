@@ -22,7 +22,7 @@ requirements:
     - hatch-vcs
     - pip
   run:
-    - python 2.7|>=3.5
+    - python >=3.8
 
 test:
   imports:
