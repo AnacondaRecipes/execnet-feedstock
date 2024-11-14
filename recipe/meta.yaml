@@ -1,28 +1,26 @@
 {% set name = "execnet" %}
-{% set version = "1.9.0" %}
-{% set hash = "8f694f3ba9cc92cab508b152dcfe322153975c29bda272e2fd7f3f00f36e47c5" %}
+{% set version = "2.1.1" %}
+{% set hash = "5189b52c6121c24feae288166ab41b32549c7e2348652736540b9e6e7d4e72e3" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ hash }}
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   noarch: python
 
 requirements:
   host:
+    - python >=3.8
+    - hatchling
+    - hatch-vcs
     - pip
-    - python 2.7|>=3.5
-    - setuptools
-    - setuptools_scm
-    - wheel
   run:
     - python 2.7|>=3.5
 
@@ -36,9 +34,9 @@ test:
     - pip check
 
 about:
-  home: http://codespeak.net/execnet
+  home: https://execnet.readthedocs.io/
   dev_url: https://github.com/pytest-dev/execnet
-  doc_url: http://codespeak.net/execnet
+  doc_url: https://execnet.readthedocs.io/
   license: MIT
   license_family: MIT
   license_file: LICENSE
